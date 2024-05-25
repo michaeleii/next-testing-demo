@@ -35,3 +35,12 @@ test("Should render the component with a custom initial count", () => {
   const currentCount = screen.getByTestId("current-count");
   expect(currentCount).toHaveTextContent(`${count}`);
 });
+
+test("Should increment three times when the 'Increment' button is pressed three times", async () => {
+  const { user } = render(<Counter />);
+  const currentCount = screen.getByTestId("current-count");
+  expect(currentCount).toHaveTextContent("0");
+  const button = screen.getByRole("button", { name: "Increment" });
+  await user.tripleClick(button);
+  expect(currentCount).toHaveTextContent("3");
+});
