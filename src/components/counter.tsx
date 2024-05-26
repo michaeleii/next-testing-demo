@@ -11,7 +11,7 @@ export default function Counter({
   const [count, setCount] = useState(initialCount);
 
   return (
-    <Card className="flex flex-col  items-center justify-center border-none shadow-none">
+    <Card className="flex flex-col items-center justify-center border-none shadow-none">
       <CardHeader>
         <CardTitle data-testid="current-count">{count}</CardTitle>
       </CardHeader>
