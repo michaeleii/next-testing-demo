@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Counter from "./counter";
-import { render } from "@/lib/utils";
+import { render } from "@/lib/testing";
 
 test("Should render the component", () => {
   render(<Counter />);
