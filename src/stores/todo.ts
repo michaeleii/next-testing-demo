@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
-interface Todo {
-  id: number;
+export interface Todo {
+  id: string;
   task: string;
 }
 
