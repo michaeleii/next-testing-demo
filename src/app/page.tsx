@@ -1,9 +1,9 @@
-import Counter from "@/components/counter";
+import TodoApp from "@/components/todo-app";
 
 export default function Home() {
   return (
-    <div className="flex min-h-dvh w-full items-center justify-center">
-      <Counter />
+    <div className="mx-auto max-w-xl p-6">
+      <TodoApp />
     </div>
   );
 }
