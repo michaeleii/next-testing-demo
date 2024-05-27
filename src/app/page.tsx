@@ -1,22 +1,14 @@
-import Counter from "@/components/counter";
+import TodoForm from "@/components/todo-form";
 import TodoList from "@/components/todo-list";
 
 export default function Home() {
   return (
-    <div className="space-y-6 p-6">
-      <TodoForm />
-      <div>
-        <TodoList
-          todos={[
-            {
-              id: "1",
-              task: "Hello world",
-            },
-          ]}
-        />
-      </div>
-      <div>
-        <Counter />
+    <div className="mx-auto max-w-xl p-6">
+      <div className="space-y-2">
+        <TodoForm />
+        <div>
+          <TodoList />
+        </div>
       </div>
     </div>
   );
