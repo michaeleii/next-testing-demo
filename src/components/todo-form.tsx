@@ -24,6 +24,7 @@ export default function TodoForm() {
       </Label>
       <div className="flex flex-1 gap-2">
         <Input
+          id="todo"
           name="todo"
           type="text"
           placeholder="Enter a todo...."
