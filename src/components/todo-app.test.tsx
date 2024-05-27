@@ -1,26 +1,21 @@
 import { render } from "@/lib/render";
 import TodoApp from "./todo-app";
 import { screen } from "@testing-library/react";
-import { create } from "zustand";
-import { TodoListState } from "@/stores/todo";
+import { useTodoStore } from "@/stores/todo";
+import { afterEach } from "vitest";
 
-function renderTodoApp() {
-  const useTodoStore = create<TodoListState>()((set) => ({
-    todos: [],
-    addTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
-    removeTodo: (todo) =>
-      set((state) => ({ todos: state.todos.filter((t) => t.id !== todo.id) })),
-  }));
-  return render(<TodoApp useTodoStore={useTodoStore} />);
-}
+afterEach(() => {
+  // Reset the store after each test
+  useTodoStore.setState({ todos: [] });
+});
 
 describe("Todo App", () => {
   test("Should render the component", () => {
-    renderTodoApp();
+    render(<TodoApp />);
   });
 
   test("Should add a todo to the todo list", async () => {
-    const { user } = renderTodoApp();
+    const { user } = render(<TodoApp />);
     const input = screen.getByLabelText("Todo");
 
     await user.type(input, "Do the laundry");
@@ -32,7 +27,7 @@ describe("Todo App", () => {
   });
 
   test("Should remove a todo when trash button is clicked from a todo item.", async () => {
-    const { user } = renderTodoApp();
+    const { user } = render(<TodoApp />);
     const input = screen.getByLabelText("Todo");
 
     await user.type(input, "Do the laundry");

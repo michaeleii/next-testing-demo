@@ -1,15 +1,8 @@
-import { Todo, TodoListState } from "@/stores/todo";
+import { Todo, useTodoStore } from "@/stores/todo";
 import { Button } from "./ui/button";
 import { Trash2Icon } from "lucide-react";
-import { StoreApi, UseBoundStore } from "zustand";
 
-export default function TodoItem({
-  todo,
-  useTodoStore,
-}: {
-  todo: Todo;
-  useTodoStore: UseBoundStore<StoreApi<TodoListState>>;
-}) {
+export default function TodoItem({ todo }: { todo: Todo }) {
   const removeTodo = useTodoStore((s) => s.removeTodo);
   return (
     <div className="flex gap-2">

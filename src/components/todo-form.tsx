@@ -1,16 +1,12 @@
 "use client";
+
 import { useState, FormEvent } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { TodoListState } from "@/stores/todo";
-import { StoreApi, UseBoundStore } from "zustand";
+import { useTodoStore } from "@/stores/todo";
 
-export default function TodoForm({
-  useTodoStore,
-}: {
-  useTodoStore: UseBoundStore<StoreApi<TodoListState>>;
-}) {
+export default function TodoForm() {
   const [todo, setTodo] = useState("");
   const addTodo = useTodoStore((s) => s.addTodo);
 

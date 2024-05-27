@@ -1,18 +1,12 @@
-import { StoreApi, UseBoundStore } from "zustand";
 import TodoForm from "./todo-form";
 import TodoList from "./todo-list";
-import { TodoListState } from "@/stores/todo";
 
-export default function TodoApp({
-  useTodoStore,
-}: {
-  useTodoStore: UseBoundStore<StoreApi<TodoListState>>;
-}) {
+export default function TodoApp() {
   return (
     <div className="space-y-2">
-      <TodoForm useTodoStore={useTodoStore} />
+      <TodoForm />
       <div>
-        <TodoList useTodoStore={useTodoStore} />
+        <TodoList />
       </div>
     </div>
   );

@@ -1,13 +1,9 @@
 "use client";
-import { TodoListState } from "@/stores/todo";
-import TodoItem from "./todo-item";
-import { StoreApi, UseBoundStore } from "zustand";
 
-export default function TodoList({
-  useTodoStore,
-}: {
-  useTodoStore: UseBoundStore<StoreApi<TodoListState>>;
-}) {
+import { useTodoStore } from "@/stores/todo";
+import TodoItem from "./todo-item";
+
+export default function TodoList() {
   const todos = useTodoStore((s) => s.todos);
 
   return (
@@ -18,9 +14,7 @@ export default function TodoList({
           <div className="text-sm">Add a todo to get started.</div>
         </div>
       ) : (
-        todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} useTodoStore={useTodoStore} />
-        ))
+        todos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
       )}
     </div>
   );
