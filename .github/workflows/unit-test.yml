@@ -17,4 +17,4 @@ jobs:
       - name: Install dependencies
         run: bun i
       - name: Run Unit Tests with Coverage Report
-        run: bun run test --coverage --run
+        run: bun run coverage
