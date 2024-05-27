@@ -3,9 +3,14 @@ import { useState, FormEvent } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { useTodoStore } from "@/stores/todo";
+import { TodoListState } from "@/stores/todo";
+import { StoreApi, UseBoundStore } from "zustand";
 
-export default function TodoForm() {
+export default function TodoForm({
+  useTodoStore,
+}: {
+  useTodoStore: UseBoundStore<StoreApi<TodoListState>>;
+}) {
   const [todo, setTodo] = useState("");
   const addTodo = useTodoStore((s) => s.addTodo);
 

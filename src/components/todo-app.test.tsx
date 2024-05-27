@@ -1,14 +1,26 @@
 import { render } from "@/lib/render";
 import TodoApp from "./todo-app";
 import { screen } from "@testing-library/react";
+import { create } from "zustand";
+import { TodoListState } from "@/stores/todo";
+
+function renderTodoApp() {
+  const useTodoStore = create<TodoListState>()((set) => ({
+    todos: [],
+    addTodo: (todo) => set((state) => ({ todos: [...state.todos, todo] })),
+    removeTodo: (todo) =>
+      set((state) => ({ todos: state.todos.filter((t) => t.id !== todo.id) })),
+  }));
+  return render(<TodoApp useTodoStore={useTodoStore} />);
+}
 
 describe("Todo App", () => {
   test("Should render the component", () => {
-    render(<TodoApp />);
+    renderTodoApp();
   });
 
   test("Should add a todo to the todo list", async () => {
-    const { user } = render(<TodoApp />);
+    const { user } = renderTodoApp();
     const input = screen.getByLabelText("Todo");
 
     await user.type(input, "Do the laundry");
@@ -20,7 +32,7 @@ describe("Todo App", () => {
   });
 
   test("Should remove a todo when trash button is clicked from a todo item.", async () => {
-    const { user } = render(<TodoApp />);
+    const { user } = renderTodoApp();
     const input = screen.getByLabelText("Todo");
 
     await user.type(input, "Do the laundry");
