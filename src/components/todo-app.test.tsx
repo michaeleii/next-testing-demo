@@ -5,12 +5,12 @@ import { axe } from "jest-axe";
 import { useTodoStore } from "@/stores/todo";
 import { afterEach } from "vitest";
 
-afterEach(() => {
-  // Reset the store after each test
-  useTodoStore.setState({ todos: [] });
-});
-
 describe("Todo App", () => {
+  afterEach(() => {
+    // Reset the store after each test
+    useTodoStore.setState({ todos: [] });
+  });
+
   test("Should render the component", () => {
     render(<TodoApp />);
   });
