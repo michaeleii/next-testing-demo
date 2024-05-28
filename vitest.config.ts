@@ -9,6 +9,7 @@ export default defineConfig({
     environmentMatchGlobs: [["**/*.test.tsx", "jsdom"]],
     globals: true,
     coverage: {
+      enabled: true,
       include: ["**/src/**"],
       exclude: ["**/src/components/ui/**"],
     },
