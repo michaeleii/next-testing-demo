@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, FormEvent } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -24,6 +25,7 @@ export default function TodoForm() {
       </Label>
       <div className="flex flex-1 gap-2">
         <Input
+          id="todo"
           name="todo"
           type="text"
           placeholder="Enter a todo...."

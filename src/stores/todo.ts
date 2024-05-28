@@ -5,7 +5,7 @@ export interface Todo {
   task: string;
 }
 
-interface TodoListState {
+export interface TodoListState {
   todos: Todo[];
   addTodo: (todo: Todo) => void;
   removeTodo: (todo: Todo) => void;
