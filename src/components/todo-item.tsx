@@ -16,6 +16,7 @@ export default function TodoItem({ todo }: { todo: Todo }) {
           size="icon"
           onClick={() => removeTodo(todo)}
         >
+          <span className="sr-only">Remove Item</span>
           <Trash2Icon />
         </Button>
       </div>

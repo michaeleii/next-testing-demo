@@ -1,6 +1,7 @@
 import { render } from "@/lib/render";
 import TodoApp from "./todo-app";
 import { screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 
 describe("Todo App", () => {
   test("Should render the component", () => {
@@ -34,5 +35,10 @@ describe("Todo App", () => {
     await user.click(removeTodoButton);
 
     expect(todoItem).not.toBeInTheDocument();
+  });
+
+  test("Should have no accessibility violations", async () => {
+    const { container } = render(<TodoApp />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
