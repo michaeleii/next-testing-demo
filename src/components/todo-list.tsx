@@ -1,9 +1,11 @@
 "use client";
+
 import { useTodoStore } from "@/stores/todo";
 import TodoItem from "./todo-item";
 
 export default function TodoList() {
   const todos = useTodoStore((s) => s.todos);
+
   return (
     <div className="space-y-2">
       {todos.length === 0 ? (

@@ -2,6 +2,13 @@ import { render } from "@/lib/render";
 import TodoApp from "./todo-app";
 import { screen } from "@testing-library/react";
 import { axe } from "jest-axe";
+import { useTodoStore } from "@/stores/todo";
+import { afterEach } from "vitest";
+
+afterEach(() => {
+  // Reset the store after each test
+  useTodoStore.setState({ todos: [] });
+});
 
 describe("Todo App", () => {
   test("Should render the component", () => {
