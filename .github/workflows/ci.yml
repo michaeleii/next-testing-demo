@@ -23,6 +23,8 @@ jobs:
           name: coverage-report
           path: coverage
   format-files:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -33,7 +35,7 @@ jobs:
         run: bun i
       - name: Format All Files with Prettier
         run: bun prettier . --write
-      - name: "Commit all changed files back to the repository"
+      - name: Commit all changed files back to the repository
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Apply formatting changes
