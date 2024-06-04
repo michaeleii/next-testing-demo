@@ -14,29 +14,27 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
-        run: bun i
+        run: bun i --frozen-lockfile
       - name: Run Unit Tests with Coverage Report
         run: bun run coverage
-      - name: Archive Coverage Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage
+
   format-files:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
-        run: bun i
+        run: bun i --frozen-lockfile
       - name: Format All Files with Prettier
-        run: bun prettier . --write
+        run: bun format
       - name: Commit all changed files back to the repository
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Apply formatting changes
+          branch: ${{ github.head_ref }}
